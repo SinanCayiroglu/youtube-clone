@@ -4,8 +4,18 @@ import React, { Suspense, useEffect, useState } from 'react'
 import Card from "@/components/Card/Card";
 import { useSearchParams } from 'next/navigation';
 
+const page = () => {
+    return (
+      <Suspense fallback={<div>Loading...</div>}>
+        <VideoList query={query} />
+      </Suspense>
+    );
+  };
+
 const VideoList = () => {
     const [videos,setVideos] = useState([])
+    const searchParams = useSearchParams();
+    const query = searchParams.get('query');
     // const router = useRouter();
     // const query = router.query;
     console.log(query);
@@ -32,15 +42,6 @@ const VideoList = () => {
       </div>
   )
 }
-const page = () => {
-    const searchParams = useSearchParams();
-    const query = searchParams.get('query');
-  
-    return (
-      <Suspense fallback={<div>Loading...</div>}>
-        <VideoList query={query} />
-      </Suspense>
-    );
-  };
+
 
 export default page
