@@ -1,13 +1,11 @@
 "use client"
 import Genres from '@/components/Genres/Genres'
-import React, { useEffect, useState } from 'react'
+import React, { Suspense, useEffect, useState } from 'react'
 import Card from "@/components/Card/Card";
 import { useSearchParams } from 'next/navigation';
 
-const page = () => {
+const VideoList = () => {
     const [videos,setVideos] = useState([])
-    const searchParams = useSearchParams();
-     const query = searchParams.get('query')
     // const router = useRouter();
     // const query = router.query;
     console.log(query);
@@ -26,15 +24,23 @@ const page = () => {
         <Genres />
       <div className="flex flex-col ml-5">
       {videos.map((video) => (
-        <div className='flex'>
             
           <Card key={video.id} video={video} />
-        </div>
         ))}
       </div>
       
       </div>
   )
 }
+const page = () => {
+    const searchParams = useSearchParams();
+    const query = searchParams.get('query');
+  
+    return (
+      <Suspense fallback={<div>Loading...</div>}>
+        <VideoList query={query} />
+      </Suspense>
+    );
+  };
 
 export default page
