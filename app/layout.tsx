@@ -23,7 +23,7 @@ export default function RootLayout({
       <AuthProvider>
 
         <Navbar />
-        <div className="flex">
+        <div className="grid grid-cols-[auto,1fr] flex-grow-1">
 
         <SideBar />
         

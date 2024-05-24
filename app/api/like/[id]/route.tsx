@@ -17,8 +17,7 @@ export const PUT = async (request:NextRequest,{params}) => {
         const user = await User.findOne({ name: session.user.name });
         const userId = user._id.toString()
     const {id} = params;
-    console.log(userId)
-    console.log(id)
+  
     const video = await Video.findById(id);
 
     const liked = video.likes.includes(userId);

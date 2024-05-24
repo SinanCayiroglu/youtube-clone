@@ -12,10 +12,16 @@ export const GET = async (request:NextRequest) => {
 
     try {
         await connect()
-      const videos = await Video.find({ tags: { $in: tags } }).limit(20);
-      console.log(videos)
+        let videos;
+        if (tags.length === 0 || (tags.length === 1 && tags[0].toLowerCase() === "all")) {
+            videos = await Video.find().limit(20); // Fetch all videos if no specific tags are provided or tag is "All"
+          } else {
+            videos = await Video.find({ tags: { $in: tags } }).limit(20);
+          }
       return new NextResponse(JSON.stringify(videos),{status:200})
     } catch (err) {
       console.error(err);
     }
   };
+
+  

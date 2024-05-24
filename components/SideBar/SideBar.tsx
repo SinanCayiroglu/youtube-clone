@@ -5,17 +5,26 @@ import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import SubscriptionsIcon from '@mui/icons-material/Subscriptions';
 import { useSession } from 'next-auth/react';
 import Link from 'next/link';
+import { ExploreOutlined, HistoryOutlined, SubscriptionsOutlined, VideoLibraryOutlined } from '@mui/icons-material';
+import WhatshotIcon from '@mui/icons-material/Whatshot';
+import MusicNoteIcon from '@mui/icons-material/MusicNote';
+import GamesIcon from '@mui/icons-material/Games';
+import SportsIcon from '@mui/icons-material/Sports';
+import ThumbUpIcon from '@mui/icons-material/ThumbUp';
+import WatchLaterIcon from '@mui/icons-material/WatchLater';
+import SmartDisplayIcon from '@mui/icons-material/SmartDisplay';
+import PlaylistPlayIcon from '@mui/icons-material/PlaylistPlay';
 
 const SideBar = () => {
     const { data: session, status } = useSession();
   return (
-    <div className='flex flex-col justify-between sticky h-screen ml-5' style={{width:"200px"}}>
+    <div className='flex flex-col gap-4 sticky h-screen ml-5 w-[200px]'>
         <div className=' rounded cursor-pointer hover:bg-stone-200'>
         <HomeIcon />
         Home
         </div>
         <div className='rounded cursor-pointer hover:bg-stone-200'>
-            Shorts
+         Shorts
         </div>
         <div className='rounded cursor-pointer hover:bg-stone-200'>
         <SubscriptionsIcon/> Subscriptions 
@@ -26,26 +35,27 @@ const SideBar = () => {
             You <ArrowForwardIosIcon />
         </div>
         <div className='rounded cursor-pointer hover:bg-stone-200'>
-            Your Channel
+        <VideoLibraryOutlined />Your Channel
         </div>
         <div className='rounded cursor-pointer hover:bg-stone-200'>
+        <HistoryOutlined />
             Your History
         </div>
         <div className='rounded cursor-pointer hover:bg-stone-200'>
-            Your Playlist
+        <PlaylistPlayIcon/> Your Playlist
         </div>
         <div className='rounded cursor-pointer hover:bg-stone-200'>
-            Your Videos
+        <SmartDisplayIcon/> Your Videos
         </div>
         <div className='rounded cursor-pointer hover:bg-stone-200'>
-            Watch Later
+        <WatchLaterIcon/>  Watch Later
         </div>
         <div className='rounded cursor-pointer hover:bg-stone-200'>
-            Liked Videos
+        <ThumbUpIcon/>  Liked Videos
         </div>
         <hr />
         <div >
-            Subscriptions
+        <SubscriptionsOutlined /> Subscriptions
         </div></>):(<>
         
         <div className='rounded cursor-pointer hover:bg-stone-200'>
@@ -61,22 +71,22 @@ const SideBar = () => {
        
         <hr />
         <div className='rounded cursor-pointer hover:bg-stone-200'>
-            Explore
+        <ExploreOutlined /> Explore
         </div>
         <div className='rounded cursor-pointer hover:bg-stone-200'>
-            Trends
+        <WhatshotIcon />  Trends
         </div>
         <div className='rounded cursor-pointer hover:bg-stone-200'>
-            Music
+        <MusicNoteIcon />  Music
         </div>
         <div className='rounded cursor-pointer hover:bg-stone-200'>
             Live
         </div>
         <div className='rounded cursor-pointer hover:bg-stone-200'>
-            Game
+        <GamesIcon/>  Game
         </div>
         <div className='rounded cursor-pointer hover:bg-stone-200'>
-            Sports
+        <SportsIcon/>  Sports
         </div>
         <hr />
     </div>

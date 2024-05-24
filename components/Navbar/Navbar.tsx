@@ -17,16 +17,17 @@ const Navbar = () => {
   const [showUpload, setShowUpload] = useState(false);
   const [open, setOpen] = useState(false);
   const [query,setQuery] = useState("")
-  
+  const [showFullWidthSearch, setShowFullWidthSearch] = useState(false)
+
   const handleDropdownToggle = () => {
     setShowDropdown(!showDropdown);
   };
 
   return (
     <>
-    <div className="flex items-center h-16 justify-between mx-5">
+    <div className="flex items-center gap-10 lg:gap-20 h-16 justify-between mx-5">
       <div className="flex items-center cursor-pointer">
-        <DensityMediumIcon className="cursor-pointer" />
+        <DensityMediumIcon className="cursor-pointer hover:bg-secondary p-2.5 w-10 h-10 flex rounded-full items-center justify-center transition-colors" />
         <Link href={"/"}>
           <div className="flex">
             <Image
@@ -40,26 +41,27 @@ const Navbar = () => {
           </div>
         </Link>
       </div>
-      <div className="flex itemms-center">
-        <div className="relative">
+      <form className="md:flex hidden flex-grow gap-4 itemms-center justify-center">
+        <div className=" flex flex-grow max-w-[600px]">
             <input
               type="text"
               placeholder="search"
-              className="rounded-full border-2 p-1 w-[600px]"
+              className="rounded-l-full border border-secondary-border py-1 px-4 w-full focus:border-blue-500 outline-none"
               onChange={(e)=>setQuery(e.target.value)}
             />
-            <button onClick={()=>window.location.href = `/Search?query=${query}`} className="rounded-e-full bg-stone-300 px-5 py-1 absolute top-0 right-0">
+            <button onClick={()=>window.location.href = `/Search?query=${query}`} className="rounded-e-full bg-stone-300 px-4 py-2 ">
               <SearchIcon />
             </button>
+            
         </div>
-        <button className="p-1 ml-5 rounded-full bg-stone-200 cursor-pointer">
+        <button className="p-2.5 w-10 h-10 ml-5 flex rounded-full items-center justify-center hover:bg-secondary-hover bg-secondary cursor-pointer">
           <MicIcon className="" />
         </button>
-      </div>
+      </form>
       {status === "authenticated" ? (
         <div className="flex items-center">
-          <UploadIcon className="mr-5 cursor-pointer" onClick={() => setOpen(true)} />
-          <NotificationsNoneIcon className="mr-5 cursor-pointer" />
+          <UploadIcon className="mr-5 p-2.5 w-10 h-10  flex rounded-full items-center justify-center hover:bg-secondary cursor-pointer" onClick={() => setOpen(true)} />
+          <NotificationsNoneIcon className="mr-5 p-2.5 w-10 h-10  flex rounded-full items-center justify-center hover:bg-secondary cursor-pointer" />
           <Image
             src={session.user.image}
             alt="avatar"

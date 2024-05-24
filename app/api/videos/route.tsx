@@ -39,8 +39,8 @@ export const POST = async(request:NextRequest)=>{
     const userId = user._id.toString()
     // const { userId, ...videoData } = body;
 
-    console.log(userId)
-    console.log(body)
+    // console.log(userId)
+    // console.log(body)
     const newVideo = new Video({ userId, ...body });
     await newVideo.save();
     return new NextResponse("Video has been saved",{status:201})

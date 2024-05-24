@@ -7,7 +7,7 @@ import { useSearchParams } from 'next/navigation';
 const page = () => {
     return (
       <Suspense fallback={<div>Loading...</div>}>
-        <VideoList query={query} />
+        <VideoList />
       </Suspense>
     );
   };

@@ -10,6 +10,7 @@ import { useSession } from 'next-auth/react';
 import HandleSub from '@/components/HandleSub/HandleSub';
 import Like from '@/components/Like/Like';
 import Dislike from '@/components/Dislike/Dislike';
+import { format } from 'timeago.js';
 
 async function getData(id) {
   const res = await fetch(`http://localhost:3000/api/videos/${id}`, {
@@ -25,7 +26,6 @@ const page = async({params}) => {
   // const [video,setVideo] = useState("")
   const video = await getData(params.id)
   const {tags} = video
-  console.log(tags)
   async function getChannel(){
     const res = await fetch(`http://localhost:3000/api/users/${video.userId}`)
     return res.json()
@@ -66,7 +66,7 @@ const page = async({params}) => {
             
             <span className='text-[10px]'>{channel.subscribers} subscribers</span>
             </div>
-              <HandleSub video={video}/>
+              <HandleSub  video={video}/>
             <div className='flex justify-end ml-96'>
               <Like video={video}/>
               <Dislike video={video}/>
@@ -78,7 +78,7 @@ const page = async({params}) => {
             
             <div className='flex flex-col mt-3 bg-gray-200 rounded'>
 
-            <span>{video.views} views {video.createdAt}</span>
+            <span>{video.views} views {format(video.createdAt)}</span>
             <span>{video.desc}</span>
             </div>
 

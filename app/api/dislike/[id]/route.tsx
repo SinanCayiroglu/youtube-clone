@@ -12,13 +12,12 @@ export const PUT = async (request:NextRequest,{params}: { params: { id: string }
     
     try {
         await connect
-        const session = await getServerSession({ req:  request as NextRequest, options: options });
+        const session = await getServerSession({ req: request as NextRequest, options: options });
   
         const user = await User.findOne({ name: session.user.name });
         const userId = user._id.toString()
     const {id} = params;
-    console.log(userId)
-    console.log(id)
+
     const video = await Video.findById(id);
 
     const liked = video.dislikes.includes(userId);
