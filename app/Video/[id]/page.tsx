@@ -11,27 +11,27 @@ import HandleSub from '@/components/HandleSub/HandleSub';
 import Like from '@/components/Like/Like';
 import Dislike from '@/components/Dislike/Dislike';
 import { format } from 'timeago.js';
+import Comment from '@/components/Comment/Comment';
+import Comments from '@/components/Comments/Comments';
 
-async function getData(id) {
-  const res = await fetch(`http://localhost:3000/api/videos/${id}`, {
-    cache: "no-store",
-  });
 
- 
-
-  return res.json();
-}
 
 const page = async({params}) => {
-  // const [video,setVideo] = useState("")
+  async function getData(id) {
+    const res = await fetch(`http://localhost:3000/api/videos/${id}`);
+    return res.json();
+  }
   const video = await getData(params.id)
-  const {tags} = video
   async function getChannel(){
     const res = await fetch(`http://localhost:3000/api/users/${video.userId}`)
-    return res.json()
+    const data = await res.json();
+  
+    return data
   }
   const channel = await getChannel()
-
+  // const [video,setVideo] = useState("")
+  const {tags} = video
+ 
   // useEffect(()=>{
   //   const fetchVideo = async (id)=>{
   //     try {
@@ -59,7 +59,7 @@ const page = async({params}) => {
             <div className='flex flex-col mx-2 mb-2'>
             <h3>{video.title}</h3>
             <div className='flex'>
-            <Image src={channel.img} alt='avatar' width={32} height={32} className='rounded-full'/>
+            <Image src={channel.img} alt='avatar' width={40} height={40} className='rounded-full'/>
             <div className='flex flex-col ml-2'>
 
             <span>{channel.name} </span>
@@ -85,6 +85,8 @@ const page = async({params}) => {
             </div>
             
             </div>
+            <Comments channel={channel} video={video}/>
+            <Comment channel={channel} video={video}/> 
             </div>
             <div className='flex flex-col'>
 

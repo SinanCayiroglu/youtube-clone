@@ -34,7 +34,6 @@ useEffect(() => {
 <div className='flex flex-col w-[360px]'>
         {videos.map((video:VideoProps)=>(<a href={`/Video/${video._id}`}>
           <div className='m-5 flex relative w-full h-[120px]' >
-          
             <Image src={video.imgUrl} alt='thumbnail' width={200} height={100}  />
             <div className='flex my-2'>
             <div className='flex flex-col mx-2'>

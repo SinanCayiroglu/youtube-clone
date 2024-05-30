@@ -17,8 +17,7 @@ const Navbar = () => {
   const [showUpload, setShowUpload] = useState(false);
   const [open, setOpen] = useState(false);
   const [query,setQuery] = useState("")
-  const [showFullWidthSearch, setShowFullWidthSearch] = useState(false)
-
+  
   const handleDropdownToggle = () => {
     setShowDropdown(!showDropdown);
   };
@@ -41,23 +40,22 @@ const Navbar = () => {
           </div>
         </Link>
       </div>
-      <form className="md:flex hidden flex-grow gap-4 itemms-center justify-center">
-        <div className=" flex flex-grow max-w-[600px]">
+      <div className="flex  flex-grow itemms-center justify-center">
+        <div className="relative flex flex-grow max-w-[600px]">
             <input
               type="text"
               placeholder="search"
-              className="rounded-l-full border border-secondary-border py-1 px-4 w-full focus:border-blue-500 outline-none"
+              className="rounded-full border-2 py-1 px-4 w-full focus:border-blue-500 outline-none"
               onChange={(e)=>setQuery(e.target.value)}
             />
-            <button onClick={()=>window.location.href = `/Search?query=${query}`} className="rounded-e-full bg-stone-300 px-4 py-2 ">
+            <button onClick={()=>window.location.href = `/Search?query=${query}`} className="rounded-e-full bg-stone-300 px-4 py-2 absolute top-0 right-0">
               <SearchIcon />
             </button>
-            
         </div>
         <button className="p-2.5 w-10 h-10 ml-5 flex rounded-full items-center justify-center hover:bg-secondary-hover bg-secondary cursor-pointer">
           <MicIcon className="" />
         </button>
-      </form>
+      </div>
       {status === "authenticated" ? (
         <div className="flex items-center">
           <UploadIcon className="mr-5 p-2.5 w-10 h-10  flex rounded-full items-center justify-center hover:bg-secondary cursor-pointer" onClick={() => setOpen(true)} />

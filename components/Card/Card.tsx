@@ -19,7 +19,7 @@ const Video = ({video}) => {
   
   return (
     <div className='flex flex-1 justify-between mb-4 rounded'>
-        <div className='mb-4  flex flex-col max-w-[500px] flex-1 w-[300px] h-[300px] '>
+        <div className='mb-4  flex flex-col flex-1 w-[300px] h-[300px] '>
         <Link href={`/Video/${video._id}`}>
           <div className='flex flex-1 w-[300px]  h-[250px] '>
         {/* <video controls className='w-full h-full'>

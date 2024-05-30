@@ -18,7 +18,6 @@ const VideoList = () => {
     const query = searchParams.get('query');
     // const router = useRouter();
     // const query = router.query;
-    console.log(query);
   useEffect(()=>{
     fetch(`/api/videos/search?query=${query}`)
     .then((response) => response.json())
@@ -30,8 +29,11 @@ const VideoList = () => {
      });
   },[])
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col ">
+        <div className='pb-4'>
+
         <Genres />
+        </div>
       <div className="flex flex-col ml-5">
       {videos.map((video) => (
             
