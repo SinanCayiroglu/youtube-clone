@@ -52,9 +52,7 @@ const Video = ({video}:any) => {
             <Image src={"/avatar.png"} alt='avatar' width={32} height={32} className='rounded-full'/>
             </Link>
             <div className='flex flex-col '>
-            <Link href={`/Video/${video._id}`} className='relative aspect-video'>
             <h3>{video.title}</h3>
-            </Link>
             <span className='text-[11px]'>{channel.name}</span>
             <span className='text-xs text-gray-500'>{video.views} views {format(video.createdAt)}</span>
             
