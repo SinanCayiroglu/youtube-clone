@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 
 const Comment = async({channel,video}) => {
     const getComment = async()=>{
-        const response = await fetch(`http://localhost:3000/api/comment/${video._id}`);
+        const response = await fetch(`https://youtube-clone-one-ashen.vercel.app/api/comment/${video._id}`);
         const data = await response.json();
         return data
     }
