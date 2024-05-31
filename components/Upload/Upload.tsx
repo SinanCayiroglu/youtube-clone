@@ -76,7 +76,7 @@ const Upload = ({setOpen}) => {
             setOpen(false)
         }
   return (
-    <div className="h-full w-full absolute top-0 left-0 bg-transparent flex items-center justify-center z-10">
+    <div className="h-full w-full absolute top-0 left-0 bg-transparent flex items-center justify-center z-20">
 
     <div className="relative flex flex-col gap-5 p-5 bg-slate-500">
       <div onClick={() => setOpen(false)} className="cursor-pointer">X</div>

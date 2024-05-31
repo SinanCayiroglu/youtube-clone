@@ -16,8 +16,8 @@ import Comments from '@/components/Comments/Comments';
 
 
 
-const page = async({params}) => {
-  async function getData(id) {
+const page = async({params}:any) => {
+  async function getData(id:any) {
     const res = await fetch(`http://localhost:3000/api/videos/${id}`);
     return res.json();
   }
@@ -90,7 +90,7 @@ const page = async({params}) => {
             </div>
             <div className='flex flex-col'>
 
-            <CardList tags={video.tags}/>
+            <CardList tags={video.tags} channel={channel}/>
             
             </div>
     </div>

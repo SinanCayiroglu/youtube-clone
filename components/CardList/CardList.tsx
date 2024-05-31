@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import { format } from 'timeago.js';
 
-const CardList = ({tags}) => {
+const CardList = ({tags,channel}) => {
   async function fetchTags() {
     try {
         const response = await fetch(`/api/videos/tags?tags=${tags}`); // Adjust the API endpoint URL as per your setup
@@ -38,7 +38,7 @@ useEffect(() => {
             <div className='flex my-2'>
             <div className='flex flex-col mx-2'>
             <h3>{video.title}</h3>
-            <span className='text-[10px]'>Channel name</span>
+            <span className='text-[10px]'>{channel.name}</span>
             <span className='text-[10px]'>{video.views} views {format(video.createdAt)}</span>
             </div>
             
