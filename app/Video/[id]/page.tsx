@@ -90,7 +90,7 @@ const page = async({params}) => {
             </div>
             <div className='flex flex-col'>
 
-            <CardList tags={video.tags}/>
+            <CardList tags={video.tags} channel={channel}/>
             
             </div>
     </div>
