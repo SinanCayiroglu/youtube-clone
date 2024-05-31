@@ -16,14 +16,14 @@ import Comments from '@/components/Comments/Comments';
 
 
 
-const page = async({params}:any) => {
-  async function getData(id:any) {
-    const res = await fetch(`https://youtube-clone-ejy8.vercel.app//api/videos/${id}`);
+const page = async({params}) => {
+  async function getData(id) {
+    const res = await fetch(`https://youtube-clone-one-ashen.vercel.app//api/videos/${id}`);
     return res.json();
   }
   const video = await getData(params.id)
   async function getChannel(){
-    const res = await fetch(`https://youtube-clone-ejy8.vercel.app//api/users/${video.userId}`)
+    const res = await fetch(`https://youtube-clone-one-ashen.vercel.app//api/users/${video.userId}`)
     const data = await res.json();
   
     return data
@@ -90,7 +90,7 @@ const page = async({params}:any) => {
             </div>
             <div className='flex flex-col'>
 
-            <CardList tags={video.tags} channel={channel}/>
+            <CardList tags={video.tags}/>
             
             </div>
     </div>
